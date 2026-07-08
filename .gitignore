@@ -1,0 +1,6 @@
+.idea/
+.DS_Store
+.claude
+PRODUCT.md
+.env
+src/config.local.php

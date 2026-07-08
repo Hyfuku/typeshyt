@@ -1,0 +1,36 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8081:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:9
+    ports:
+      - "3307:3306"   # 3306 ist lokal vom Homebrew-MySQL belegt
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: typeshyt
+      MYSQL_USER: typeshyt
+      MYSQL_PASSWORD: typeshyt
+    volumes:
+      - db_daten:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  db_daten:

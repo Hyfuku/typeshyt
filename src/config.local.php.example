@@ -1,0 +1,10 @@
+<?php
+
+// Vorlage: auf dem Server nach config.local.php kopieren und Werte eintragen.
+// Die echte config.local.php steht in .gitignore und wird nie committet.
+return [
+    'host' => 's71.goserver.host',
+    'name' => 'web23_db2',
+    'user' => 'web23_2',
+    'pass' => 'HIER-DAS-PASSWORT',
+];

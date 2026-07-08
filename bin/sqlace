@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Öffnet die Docker-Datenbank (Port 3307) in Sequel Ace.
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+# DB-Container starten, falls er nicht läuft
+if ! docker-compose ps --status running db 2>/dev/null | grep -q db; then
+    echo "DB-Container läuft nicht – starte ihn..."
+    docker-compose up -d db
+fi
+
+open -a "Sequel Ace" "mysql://typeshyt:typeshyt@127.0.0.1:3307/typeshyt"

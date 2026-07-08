@@ -1,0 +1,24 @@
+# typeshyt – .htaccess für Shared Hosting (Docroot = Projektwurzel).
+# Aufgaben: Basic Auth vor der ganzen Seite, alle Anfragen aus public/
+# bedienen, sensible Dateien und Ordner sperren.
+
+# ---------- Basic Auth ----------
+AuthType Basic
+AuthName "typeshyt"
+AuthUserFile /home/www/.htpasswd
+Require valid-user
+
+# ---------- Sensible Dateien sperren ----------
+<FilesMatch "\.(sql|md|ya?ml|yml|lock|scss|htpasswd)$|^(Dockerfile|\.env|\.env\.example|\.gitignore)$">
+    Require all denied
+</FilesMatch>
+
+# ---------- Rewrite in den public/-Ordner ----------
+RewriteEngine On
+
+# Ordner mit Quellcode/Konfiguration hart sperren
+RewriteRule ^(src|scss|bin|\.git)(/|$) - [F]
+
+# Alles andere intern aus public/ bedienen (URL bleibt ohne /public/)
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
