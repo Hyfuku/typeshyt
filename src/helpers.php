@@ -34,7 +34,7 @@ function url(string $pfad): string
     return BASIS_URL . $pfad;
 }
 
-function redirect(string $url): never
+function redirect(string $url)
 {
     header('Location: ' . $url);
     exit;
