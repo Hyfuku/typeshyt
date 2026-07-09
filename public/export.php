@@ -4,7 +4,7 @@ require_once __DIR__ . '/../src/helpers.php';
 
 // Kompletter Datenbank-Export als SQL-Download:
 // Struktur (SHOW CREATE TABLE) + alle Zeilen als INSERTs.
-$tabellen = ['tickets', 'testfaelle', 'bewerbungen'];
+$tabellen = ['tickets', 'testfaelle', 'ticket_verweise', 'bewerbungen'];
 
 header('Content-Type: application/sql; charset=utf-8');
 header('Content-Disposition: attachment; filename="typeshyt-export-' . date('Y-m-d_H-i') . '.sql"');

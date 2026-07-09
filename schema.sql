@@ -40,6 +40,15 @@ CREATE TABLE IF NOT EXISTS testfaelle (
         ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
+-- Verknüpfungen zwischen Tickets (gerichtet: ticket_id verweist auf verweist_auf)
+CREATE TABLE IF NOT EXISTS ticket_verweise (
+    ticket_id    INT UNSIGNED NOT NULL,
+    verweist_auf INT UNSIGNED NOT NULL,
+    PRIMARY KEY (ticket_id, verweist_auf),
+    CONSTRAINT fk_verweis_von FOREIGN KEY (ticket_id) REFERENCES tickets (id) ON DELETE CASCADE,
+    CONSTRAINT fk_verweis_auf FOREIGN KEY (verweist_auf) REFERENCES tickets (id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
 CREATE TABLE IF NOT EXISTS bewerbungen (
     bewerbungsnr         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     bewerbernr      VARCHAR(150) NOT NULL,

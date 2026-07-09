@@ -353,3 +353,54 @@ a:hover { text-decoration: underline; }
 }
 .fusszeile a { color: var(--text-schwach); }
 .fusszeile a:hover { color: var(--primary); }
+
+/* ---------- Ticket-Verknüpfungen ---------- */
+.verweis-liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 4px 16px;
+}
+.formular .verweis-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+.verweis-option .ticket-nr {
+    color: var(--text-schwach);
+    font-family: ui-monospace, monospace;
+    font-size: 0.8rem;
+}
+.verweise {
+    background: #fff;
+    border: 1px solid var(--rand);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 24px;
+}
+.verweise h2 { margin: 0 0 10px; }
+.verweis-gruppe {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.verweis-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--rand);
+    border-radius: 999px;
+    padding: 3px 12px;
+    font-size: 0.85rem;
+    color: var(--text);
+    background: var(--bg);
+}
+.verweis-chip:hover { border-color: var(--primary); text-decoration: none; }
+.verweis-chip .ticket-nr {
+    color: var(--text-schwach);
+    font-family: ui-monospace, monospace;
+    font-size: 0.75rem;
+}

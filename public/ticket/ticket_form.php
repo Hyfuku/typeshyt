@@ -30,9 +30,29 @@ if ($ticket_id !== null) {
     $ticket = array_merge($ticket, $vorhandenes_ticket);
 }
 
+// Alle anderen Tickets für die Verknüpfungsauswahl
+$abfrage = db()->prepare('SELECT id, kurztitel FROM tickets WHERE id <> ? ORDER BY id');
+$abfrage->execute([$ticket_id ?? 0]);
+$verknuepfbare_tickets = $abfrage->fetchAll();
+
+// Bereits gesetzte Verweise (beim Bearbeiten)
+$verweise = [];
+if ($ticket_id !== null) {
+    $abfrage = db()->prepare('SELECT verweist_auf FROM ticket_verweise WHERE ticket_id = ?');
+    $abfrage->execute([$ticket_id]);
+    $verweise = array_map('intval', array_column($abfrage->fetchAll(), 'verweist_auf'));
+}
+
 $fehlermeldungen = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Ausgewählte Verweise übernehmen – nur IDs, die wirklich existieren
+    $gueltige_ids = array_map('intval', array_column($verknuepfbare_tickets, 'id'));
+    $verweise = array_values(array_intersect(
+        array_map('intval', (array)($_POST['verweise'] ?? [])),
+        $gueltige_ids
+    ));
+
     foreach (array_keys($ticket) as $feld) {
         if (isset($_POST[$feld])) {
             $ticket[$feld] = trim($_POST[$feld]);
@@ -97,6 +117,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                  WHERE id = ?'
             )->execute([...$spalten_werte, $ticket_id]);
         }
+
+        // Verweise neu setzen (alte entfernen, ausgewählte eintragen)
+        db()->prepare('DELETE FROM ticket_verweise WHERE ticket_id = ?')->execute([$ticket_id]);
+        $verweis_einfuegen = db()->prepare('INSERT INTO ticket_verweise (ticket_id, verweist_auf) VALUES (?, ?)');
+        foreach ($verweise as $verweis_id) {
+            $verweis_einfuegen->execute([$ticket_id, $verweis_id]);
+        }
+
         redirect('ticket_detail.php?id=' . $ticket_id);
     }
 }
@@ -175,6 +203,23 @@ require __DIR__ . '/../../src/partials/header.php';
         <div class="vorschau">
             <strong>Vorschau:</strong>
             <p id="rupp-vorschau"><?= (rupp_satz($ticket)) ?></p>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Verknüpfte Tickets <span class="hinweis">(dieses Ticket verweist auf …)</span></legend>
+        <?php if (!$verknuepfbare_tickets): ?>
+            <p class="hinweis">Noch keine anderen Tickets vorhanden.</p>
+        <?php endif; ?>
+        <div class="verweis-liste">
+            <?php foreach ($verknuepfbare_tickets as $anderes_ticket): ?>
+                <label class="verweis-option">
+                    <input type="checkbox" name="verweise[]" value="<?= $anderes_ticket['id'] ?>"
+                        <?= in_array((int)$anderes_ticket['id'], $verweise, true) ? 'checked' : '' ?>>
+                    <span class="ticket-nr"><?= ticket_nr((int)$anderes_ticket['id']) ?></span>
+                    <?= $anderes_ticket['kurztitel'] ?>
+                </label>
+            <?php endforeach; ?>
         </div>
     </fieldset>
 

@@ -16,6 +16,23 @@ $abfrage = db()->prepare('SELECT * FROM testfaelle WHERE ticket_id = ? ORDER BY 
 $abfrage->execute([$ticket_id]);
 $testfaelle = $abfrage->fetchAll();
 
+// Verknüpfungen: worauf verweist dieses Ticket – und wer verweist hierher?
+$abfrage = db()->prepare(
+    'SELECT t.id, t.kurztitel FROM ticket_verweise v
+     JOIN tickets t ON t.id = v.verweist_auf
+     WHERE v.ticket_id = ? ORDER BY t.id'
+);
+$abfrage->execute([$ticket_id]);
+$verweist_auf = $abfrage->fetchAll();
+
+$abfrage = db()->prepare(
+    'SELECT t.id, t.kurztitel FROM ticket_verweise v
+     JOIN tickets t ON t.id = v.ticket_id
+     WHERE v.verweist_auf = ? ORDER BY t.id'
+);
+$abfrage->execute([$ticket_id]);
+$referenziert_von = $abfrage->fetchAll();
+
 $titel = ticket_nr($ticket_id) . ' – ' . $ticket['kurztitel'];
 require __DIR__ . '/../../src/partials/header.php';
 ?>
@@ -40,6 +57,32 @@ require __DIR__ . '/../../src/partials/header.php';
     <dt>Angelegt</dt><dd><?= date('d.m.Y H:i', strtotime($ticket['created_at'])) ?></dd>
     <dt>Zuletzt geändert</dt><dd><?= date('d.m.Y H:i', strtotime($ticket['updated_at'])) ?></dd>
 </dl>
+
+<?php if ($verweist_auf || $referenziert_von): ?>
+<section class="verweise">
+    <h2>Verknüpfte Tickets</h2>
+    <?php if ($verweist_auf): ?>
+        <div class="verweis-gruppe">
+            <span class="hinweis">Verweist auf:</span>
+            <?php foreach ($verweist_auf as $verweis): ?>
+                <a class="verweis-chip" href="ticket_detail.php?id=<?= $verweis['id'] ?>">
+                    <span class="ticket-nr"><?= ticket_nr((int)$verweis['id']) ?></span> <?= $verweis['kurztitel'] ?>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    <?php if ($referenziert_von): ?>
+        <div class="verweis-gruppe">
+            <span class="hinweis">Wird referenziert von:</span>
+            <?php foreach ($referenziert_von as $verweis): ?>
+                <a class="verweis-chip" href="ticket_detail.php?id=<?= $verweis['id'] ?>">
+                    <span class="ticket-nr"><?= ticket_nr((int)$verweis['id']) ?></span> <?= $verweis['kurztitel'] ?>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+</section>
+<?php endif; ?>
 
 <section class="testfaelle">
     <div class="abschnitt-kopf">
