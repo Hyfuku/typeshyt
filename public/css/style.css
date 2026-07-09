@@ -342,3 +342,14 @@ a:hover { text-decoration: underline; }
 }
 .tabelle tbody tr:nth-child(even) { background: var(--bg); }
 .tabelle tbody tr:hover { background: #eff6ff; }
+
+/* ---------- Fußzeile ---------- */
+.fusszeile {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 20px 32px;
+    border-top: 1px solid var(--rand);
+    font-size: 0.85rem;
+}
+.fusszeile a { color: var(--text-schwach); }
+.fusszeile a:hover { color: var(--primary); }

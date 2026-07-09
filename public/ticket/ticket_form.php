@@ -132,7 +132,7 @@ require __DIR__ . '/../../src/partials/header.php';
                 </select>
             </label>
             <label>Aktuell geplanter Personalaufwand (PT)
-                <input type="text" name="aufwand_pt" inputmode="decimal" placeholder="z. B. 2,5" value="<?= (str_replace('.', ',', (string)$ticket['aufwand_pt'])) ?>">
+                <input type="text" name="aufwand_pt" inputmode="decimal" placeholder="z. B. 2,25" value="<?= (str_replace('.', ',', (string)$ticket['aufwand_pt'])) ?>">
             </label>
         </div>
     </fieldset>

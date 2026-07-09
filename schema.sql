@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS tickets (
     kurztitel          VARCHAR(150)  NOT NULL,
     quelle_stakeholder VARCHAR(150)  NULL,
     prioritaet         ENUM('hoch','mittel','niedrig') NOT NULL DEFAULT 'mittel',
-    aufwand_pt         DECIMAL(4,1)  NULL,
+    aufwand_pt         DECIMAL(5,2)  NULL,
     bedingung          VARCHAR(255)  NULL,
     verbindlichkeit    ENUM('muss','soll','wird') NOT NULL DEFAULT 'muss',
     system_name        VARCHAR(100)  NOT NULL DEFAULT 'das System',
