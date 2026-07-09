@@ -27,7 +27,7 @@ $bewerbungen = $sql->fetchAll(); #Ergebnis in Array Ausgabe
                     <td colspan="4">Keine Bewerbungen gefunden.</td>
                 </tr>
             <?php endif; ?>
-            <?php foreach ($bewerbungen as $bewerbung): ?> #Ausgabe aller Daten in HTML
+            <?php foreach ($bewerbungen as $bewerbung): ?> <!---Ausgabe aller Daten in HTML Tabelle-->
                 <tr>
                     <td><?= ($bewerbung['bewerbungsnr']) ?></td>
                     <td><?= ($bewerbung['bewerbernr']) ?></td>

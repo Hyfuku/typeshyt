@@ -25,6 +25,10 @@ body {
     font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+// Selektor für eine „aktive" Pill (Feld gefüllt) – einmal definiert,
+// genutzt für Ring und Verbindungslinien.
+$pill-aktiv: ".filter-pill:has(input:not(:placeholder-shown), select option:checked:not([value='']))";
+
 // ---------- Filterleiste ----------
 .filter-leiste {
     display: flex;
@@ -52,8 +56,10 @@ body {
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
 
-        // aktiver Filter = Teil der SQL-WHERE-Klausel → Doppelring wie in der Vorlage
-        &.aktiv {
+        // Aktiver Filter = Feld gefüllt → Doppelring. Rein natives CSS:
+        // :has() erkennt nicht-leere Inputs (:placeholder-shown) bzw.
+        // eine gewählte Option mit Wert – ohne PHP-Klassen, ohne JS.
+        &:has(input:not(:placeholder-shown), select option:checked:not([value=''])) {
             border-color: $tinte;
             box-shadow: 0 0 0 2px $flaeche, 0 0 0 4px $blau;
         }
@@ -90,10 +96,11 @@ body {
         }
     }
 
-    // ---------- Verbindungslinien (UND-Verkettung) ----------
+    // ---------- Verbindungslinien ----------
     // Jeder .filter-verbinder sitzt zwischen zwei Pills. Standard: unsichtbar,
-    // nur Abstandshalter. Liegt er innerhalb der Kette aktiver Filter,
-    // wird er zur Linie; direkt vor einem aktiven Filter trägt er das UND.
+    // nur Abstandshalter. Der Strich erscheint rein über CSS, wenn der Verbinder
+    // innerhalb der Kette aktiver Filter liegt: VOR ihm gibt es eine aktive Pill
+    // (~-Kombinator) und NACH ihm auch (:has mit ~).
     .filter-verbinder {
         position: relative;
         width: 40px;
@@ -101,26 +108,10 @@ body {
         flex: 0 0 auto;
         background: transparent;
         transition: background-color $uebergang;
+    }
 
-        &.linie {
-            background: $blau;
-        }
-
-        &.und::after {
-            content: 'UND';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: $blau;
-            color: $flaeche;
-            font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            line-height: 1;
-            padding: 3px 6px;
-            border-radius: $pill-radius;
-        }
+    #{$pill-aktiv} ~ .filter-verbinder:has(~ #{$pill-aktiv}) {
+        background: $blau;
     }
 
     // ---------- Aktions-Pills ----------

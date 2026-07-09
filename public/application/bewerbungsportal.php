@@ -2,12 +2,12 @@
 
 require_once __DIR__ . '/../../src/helpers.php';
 
-$form_bewerbungsnr = trim($_GET['bewerbungsnr'] ?? '');
+$form_bewerbungsnr = trim($_GET['bewerbungsnr'] ?? ''); //GET AUS URL
 $form_bewerbernr   = trim($_GET['bewerbernr'] ?? '');
 $form_status       = $_GET['status'] ?? '';
 
 $bedingungen = [];
-$parameter   = [];
+$parameter   = []; //VALUE DES SUBMIT FORMS
 
 if ($form_bewerbungsnr !== '') {
     $bedingungen[] = 'bewerbungsnr = ?';
@@ -38,16 +38,13 @@ if ($suche_aktiv) {
     $sql .= ' ORDER BY bewerbungsnr DESC';
 
     $abfrage = db()->prepare($sql);
-    $abfrage->execute($parameter);
+    $abfrage->execute($parameter); //WERTE DER SUBMIT FORMS WERDEN EINGEFÜGT
     $bewerbungen = $abfrage->fetchAll();
 }
 
-// Ring, Verbindungslinien und UND-Chips der Filterleiste setzt js/filter.js
-// anhand der Feldwerte (Klassen: aktiv / linie / und, Styling in scss/filter.scss).
-
 ?>
-<link rel="stylesheet" href="<?= url('/css/style.css') ?>">
-<link rel="stylesheet" href="<?= url('/css/filter.css') ?>">
+<link rel="stylesheet" href="<?= url('/css/style.css') ?>"> //STYLING
+<link rel="stylesheet" href="<?= url('/css/filter.css') ?>"> //FILTER STYLING
 
 <main>
     <h1>Datenbank</h1>
@@ -76,13 +73,12 @@ if ($suche_aktiv) {
 
         <div class="filter-aktionen">
             <button type="submit" class="pill-knopf">Filtern</button>
-            <a class="pill-knopf" id="alle-knopf" href="bewerbungsportal.php?alle=1">Alle Bewerbungen</a>
+            <a class="pill-knopf<?= $alle_anzeigen && !$bedingungen ? ' aktiv' : '' ?>" href="bewerbungsportal.php?alle=1">Alle Bewerbungen</a>
             <?php if ($bedingungen || $alle_anzeigen): ?>
                 <a class="pill-knopf zuruecksetzen" href="bewerbungsportal.php">Zurücksetzen <span class="kreuz">×</span></a>
             <?php endif; ?>
         </div>
     </form>
-    <script src="js/filter.js"></script>
 
     <?php if (!$suche_aktiv): ?>
         <p class="leer">Filter setzen oder „Alle Bewerbungen" anzeigen.</p>
