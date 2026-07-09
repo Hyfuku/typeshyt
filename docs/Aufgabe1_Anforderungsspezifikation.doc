@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="utf-8"><title>Aufgabe 1 – Anforderungsspezifikation</title></head>
+<body style="font-family:Calibri, Arial, sans-serif;font-size:11pt;">
+
+<h1>Aufgabe 1 – Anforderungsspezifikation</h1>
+<p>Funktionale Anforderungen nach der Anforderungsschablone von Rupp, inklusive Fehler- und
+Grenzfällen. Jede Anforderung besitzt eine eindeutige ID (A-001 … A-010, entspricht den
+Tickets T-001 … T-010 im Ticketsystem) sowie die Attribute Kurztitel, formulierte Anforderung,
+Quelle/Stakeholder, Priorität, aktuell geplanter Personalaufwand und Verknüpfungen zu anderen
+Anforderungen.</p>
+
+<h2>Funktionale Anforderungen</h2>
+<table style="border-collapse:collapse;width:100%;">
+    <tr>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">ID</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Kurztitel</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Anforderung nach Rupp</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Quelle / Stakeholder</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Priorität</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Aufwand</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Verknüpfungen</th>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>A-001</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Datenbank Integration</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System muss fähig sein, die Bewerbungsdaten aus der zentralen Datenbank zu laden.</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Geschäftsleitung des Unternehmens U</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Niedrig</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">0,3 PT</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>A-002</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Filter: Applicant-ID</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System muss dem Personalleiter die Möglichkeit bieten, die Bewerbungen nach Applicant-ID zu filtern.</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Personalleiter</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Hoch</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">0,3 PT</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">beeinflusst A-007; beeinflusst A-010</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>A-003</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Filter: Application Status</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System muss dem Nutzer die Möglichkeit bieten, den Application Status über Radio Buttons zu filtern.</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Personalleiter</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mittel</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">0,3 PT</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">beeinflusst A-007; beeinflusst A-010</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>A-004</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Integration: Webserver</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System muss auch außerhalb des internen Unternehmensnetzwerks erreichbar sein.</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">IT-Leiterin</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mittel</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">0,3 PT</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">möglicher Widerspruch zu A-009 (Datenschutz bei externer Erreichbarkeit)</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>A-005</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Verstecken der Daten</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Sobald der Personalleiter initial das System aufruft, muss das System ausschließlich die Filtermöglichkeiten anzeigen.</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Personalleiter</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mittel</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">0,25 PT</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">beeinflusst A-006</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>A-006</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Frontend: Darstellung Tabellarisch</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System muss die Inhalte in einer tabellarischen Darstellung ausgeben.</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Personalleiter</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mittel</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">0,5 PT</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>A-007</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Filterkombination</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System muss dem Nutzer die Möglichkeit bieten, mehrere Filter gleichzeitig zu verwenden.</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Personalleiter</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mittel</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">0,5 PT</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>A-008</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Filter zurücksetzen</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Sobald der Nutzer einen Filter ausgewählt hat, muss das System dem Nutzer die Möglichkeit bieten, die gesetzten Filter wieder zu entfernen.</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Personalleiter</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mittel</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">0,25 PT</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">beeinflusst A-005</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>A-009</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Zentrale Datenbank</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System muss alle Bewerbungen in einer zentralen Datenbank speichern.</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Geschäftsleitung des Unternehmens U</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mittel</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">0,75 PT</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">beeinflusst A-001</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>A-010</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Fehlermeldung (Warnungen)</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Falls bei der Filterung kein Bewerber zugeordnet werden kann, muss das System einen Hinweis auf fehlende Treffer anzeigen.</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Personalleiter</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mittel</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">0,25 PT</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+    </tr>
+    </table>
+
+<h2>Testfälle</h2>
+<p>Zu jeder Anforderung existieren zwei Testfälle (Positiv-, Negativ- bzw. Grenzfälle).
+Die Referenz-ID verweist auf die Anforderung aus der obigen Tabelle.</p>
+<table style="border-collapse:collapse;width:100%;">
+    <tr>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Testfall-ID</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Referenz auf Anforderungs-ID</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Vorbedingung</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Fehlersituation (optional)</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Trigger / Stimuli / Eingabesequenz</th>
+        <th style="background:#4472C4;color:#fff;text-align:left;padding:6px 8px;border:1px solid #8ea9db;">Erwartete Ergebnisse / Ausgaben</th>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-001</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-002</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mindestens ein Bewerber mit bekannter Applicant-ID ist in der Datenbank vorhanden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. System aufrufen<br />
+2. Gültige Applicant-ID in das Filterfeld eingeben<br />
+3. Filter anwenden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System zeigt genau den Bewerber mit der eingegebenen Applicant-ID an</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-002</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-002</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Datenbank enthält Bewerber</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Eingegebene Applicant-ID existiert nicht</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. System aufrufen<br />
+2. Nicht existierende Applicant-ID eingeben<br />
+3. Filter anwenden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System zeigt keine Treffer und gibt einen entsprechenden Hinweis aus</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-003</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-003</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Bewerber mit unterschiedlichen Status sind vorhanden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. System aufrufen<br />
+2. Radio Button eines Status (z. B. „In Review") auswählen<br />
+3. Filter anwenden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System zeigt ausschließlich Bewerber mit dem gewählten Status an</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-004</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-003</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Ein Statusfilter ist bereits aktiv</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Anderen Radio Button (z. B. „Rejected") auswählen</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System aktualisiert die Anzeige und zeigt nur Bewerber des neu gewählten Status; der vorherige Status ist nicht mehr aktiv (Radio Buttons schließen sich gegenseitig aus)</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-005</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-004</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">System ist deployt und läuft</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Gerät verwenden, das nicht im internen Unternehmensnetzwerk ist (z. B. mobiles Netz)<br />
+2. System-URL aufrufen</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System ist erreichbar und die Startseite wird geladen</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-006</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-004</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">System ist deployt und läuft</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Externes WLAN/Home-Office-Verbindung nutzen<br />
+2. System-URL aufrufen</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System ist erreichbar und funktioniert wie im internen Netzwerk</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-007</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-005</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Personalleiter ist berechtigt</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Personalleiter ruft das System zum ersten Mal / neu auf</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System zeigt ausschließlich die Filtermöglichkeiten an, keine Bewerberdaten/Tabelle</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-008</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-005</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Datenbank enthält Bewerber</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. System initial aufrufen<br />
+2. Prüfen, ob eine Ergebnistabelle sichtbar ist</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Es wird keine Tabelle und keine Bewerberliste angezeigt, solange kein Filter angewendet wurde</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-009</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-006</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mehrere Bewerber sind vorhanden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Filter anwenden, der mehrere Treffer liefert</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System gibt die Ergebnisse in einer tabellarischen Darstellung (Zeilen/Spalten) aus</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-010</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-006</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Genau ein Bewerber passt auf den Filter</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Filter anwenden, der einen Treffer liefert</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Auch ein einzelner Treffer wird korrekt als Tabellenzeile dargestellt</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-011</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-007</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Bewerber mit passender ID und passendem Status vorhanden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Applicant-ID-Filter setzen<br />
+2. Zusätzlich Status-Filter setzen<br />
+3. Filter anwenden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System zeigt nur Bewerber, die beide Filterkriterien erfüllen (Schnittmenge)</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-012</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-007</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Datenbank enthält Bewerber</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Kombination der Filter liefert keine Übereinstimmung</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. ID-Filter und Status-Filter kombinieren, die auf keinen Bewerber gleichzeitig zutreffen<br />
+2. Filter anwenden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System zeigt keine Treffer und weist auf fehlende Ergebnisse hin</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-013</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-008</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mindestens ein Filter ist aktiv gesetzt</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Einen aktiven Filter über die Entfernen-Funktion löschen</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Der Filter wird entfernt und die Ergebnisliste aktualisiert sich entsprechend</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-014</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-008</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Mehrere Filter sind aktiv</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Alle aktiven Filter nacheinander entfernen</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Nach Entfernen aller Filter befindet sich das System wieder im ungefilterten Ausgangszustand</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-015</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-009</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">System ist bedienbar, Datenbank erreichbar</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Neue Bewerbung erfassen/eingehen lassen<br />
+2. In der zentralen Datenbank prüfen</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Die Bewerbung ist in der zentralen Datenbank gespeichert und abrufbar</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-016</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-009</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Eine Bewerbung wurde gespeichert</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. System neu laden / neu aufrufen<br />
+2. Nach der Bewerbung filtern</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Die zuvor gespeicherte Bewerbung ist weiterhin vorhanden (Daten bleiben persistent)</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-017</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-010</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Datenbank enthält Bewerber</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Kein Bewerber entspricht dem gewählten Filter</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Filter setzen, der garantiert keinen Treffer liefert<br />
+2. Filter anwenden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System informiert den Nutzer, dass keine Daten gefunden wurden</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-018</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-010</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Datenbank enthält Bewerber</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Statusfilter ohne zugehörige Bewerber ausgewählt</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Status auswählen, für den kein Bewerber existiert<br />
+2. Filter anwenden</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System zeigt eine verständliche „Keine Daten gefunden"-Meldung statt einer leeren Tabelle ohne Hinweis</td>
+    </tr>
+        <tr style="background:#D9E2F3;">
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-019</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-001</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Datenbank ist erreichbar und enthält Daten</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">–</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. System aufrufen<br />
+2. Filter anwenden, der Daten liefert</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System ruft die Daten erfolgreich aus der Datenbank ab und zeigt sie an</td>
+    </tr>
+        <tr>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;"><b>TF-020</b></td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">A-001</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">System ist gestartet</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Datenbank ist nicht erreichbar / Verbindung schlägt fehl</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">1. Datenbankverbindung unterbrechen<br />
+2. Filter anwenden / Daten abrufen</td>
+        <td style="padding:6px 8px;border:1px solid #b4c6e7;vertical-align:top;">Das System fängt den Fehler ab und gibt eine verständliche Fehlermeldung aus, statt abzustürzen</td>
+    </tr>
+    </table>
+
+</body>
+</html>
