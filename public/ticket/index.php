@@ -34,7 +34,7 @@ require __DIR__ . '/../../src/partials/header.php';
                                 <span class="badge"><?= (pt_format($ticket['aufwand_pt'])) ?></span>
                             <?php endif; ?>
                             <?php if ($ticket['tf_anzahl'] > 0): ?>
-                                <span class="badge">⧉ <?= $ticket['tf_anzahl'] ?> Testfall<?= $ticket['tf_anzahl'] > 1 ? 'e' : '' ?></span>
+                                <span class="badge">⧉ <?= $ticket['tf_anzahl'] ?> <?= $ticket['tf_anzahl'] > 1 ? 'Testfälle' : 'Testfall' ?></span>
                             <?php endif; ?>
                         </footer>
                     </article>
