@@ -71,8 +71,8 @@ function verbinder_klassen(int $lueckenindex, ?int $kette_von, ?int $kette_bis, 
 $titel = 'Datenbank';
 
 ?>
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/filter.css">
+<link rel="stylesheet" href="<?= url('/css/style.css') ?>">
+<link rel="stylesheet" href="<?= url('/css/filter.css') ?>">
 
 <main>
 <h1>Datenbank</h1>

@@ -14,7 +14,8 @@ $uebergang:     150ms cubic-bezier(0.22, 1, 0.36, 1); // ease-out-quint
 // ---------- Geist (lokal gehostet, variabler Font) ----------
 @font-face {
     font-family: 'Geist';
-    src: url('/fonts/Geist-Variable.woff2') format('woff2');
+    // relativ zu public/css/ → funktioniert auch im Unterordner-Deployment
+    src: url('../fonts/Geist-Variable.woff2') format('woff2');
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;

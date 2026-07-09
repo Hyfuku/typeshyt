@@ -26,6 +26,14 @@ const STATUS_SPALTEN = [
     'finish' => 'Finish',
 ];
 
+// Baut aus einem absoluten Pfad (/ticket/, /css/…) die vollständige URL
+// inklusive Unterordner-Präfix (BASIS_URL), falls das Projekt nicht in der
+// Domain-Wurzel läuft.
+function url(string $pfad): string
+{
+    return BASIS_URL . $pfad;
+}
+
 function redirect(string $url): never
 {
     header('Location: ' . $url);

@@ -1,6 +1,6 @@
 FROM php:8.4-apache
 
-RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_mysql && a2enmod rewrite
 
 # DocumentRoot auf public/ legen (wie später auf dem eigenen Server)
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public

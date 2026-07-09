@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= ($titel ?? 'typeshyt') ?> – typeshyt</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/filter.css">
+    <link rel="stylesheet" href="<?= url('/css/style.css') ?>">
+    <link rel="stylesheet" href="<?= url('/css/filter.css') ?>">
 </head>
 <body>
 <header class="topbar">
-    <a class="logo" href="/ticket/">typeshyt</a>
+    <a class="logo" href="<?= url('/ticket/') ?>">typeshyt</a>
     <nav>
-        <a href="/ticket/">Board</a>
-        <a class="btn btn-primary" href="/ticket/ticket_form.php">+ Neues Ticket</a>
+        <a href="<?= url('/ticket/') ?>">Board</a>
+        <a class="btn btn-primary" href="<?= url('/ticket/ticket_form.php') ?>">+ Neues Ticket</a>
     </nav>
 </header>
 <main>

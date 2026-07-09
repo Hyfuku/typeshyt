@@ -3,10 +3,14 @@
 # bedienen, sensible Dateien und Ordner sperren.
 
 # ---------- Basic Auth ----------
-AuthType Basic
-AuthName "typeshyt"
-AuthUserFile /home/www/.htpasswd
-Require valid-user
+# Greift nur, wenn die Passwortdatei existiert (= auf dem Server).
+# Lokal im Docker-Container gibt es sie nicht -> kein Passwortschutz.
+<IfFile /home/www/.htpasswd>
+    AuthType Basic
+    AuthName "typeshyt"
+    AuthUserFile /home/www/.htpasswd
+    Require valid-user
+</IfFile>
 
 # ---------- Sensible Dateien sperren ----------
 <FilesMatch "\.(sql|md|ya?ml|yml|lock|scss|htpasswd)$|^(Dockerfile|\.env|\.env\.example|\.gitignore)$">
@@ -19,6 +23,8 @@ RewriteEngine On
 # Ordner mit Quellcode/Konfiguration hart sperren
 RewriteRule ^(src|scss|bin|\.git)(/|$) - [F]
 
-# Alles andere intern aus public/ bedienen (URL bleibt ohne /public/)
-RewriteCond %{REQUEST_URI} !^/public/
+# Alles andere intern aus public/ bedienen (URL bleibt ohne /public/).
+# Die Bedingung prüft den Pfad relativ zu diesem Ordner – funktioniert
+# dadurch auch, wenn das Projekt in einem Unterordner der Domain liegt.
+RewriteCond $1 !^public/
 RewriteRule ^(.*)$ public/$1 [L]

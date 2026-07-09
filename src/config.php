@@ -15,3 +15,7 @@ define('DB_DSN', sprintf(
 ));
 define('DB_USER', $konfig_lokal['user'] ?? (getenv('DB_USER') ?: 'root'));
 define('DB_PASS', $konfig_lokal['pass'] ?? (getenv('DB_PASS') ?: ''));
+
+// URL-Präfix, wenn das Projekt in einem Unterordner der Domain läuft
+// (Server: '/typeshyt'). Lokal und im Docker-Container leer.
+define('BASIS_URL', $konfig_lokal['basis_url'] ?? (getenv('BASIS_URL') ?: ''));

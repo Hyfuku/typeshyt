@@ -63,7 +63,7 @@ Startet bei Bedarf den DB-Container und öffnet die Verbindung direkt in Sequel 
 
 ## Deployment (goserver Shared Hosting)
 
-Docroot: `/home/www/alexanderkhuu.de` auf `web23@s71.goserver.host`. Die `.htaccess` im Projektstamm übernimmt Basic Auth, das Rewrite nach `public/` und sperrt `src/`, `scss/`, SQL-/Docker-Dateien.
+Projektordner: `/home/www/alexanderkhuu.de/typeshyt` (URL: alexanderkhuu.de/typeshyt) auf `web23@s71.goserver.host`. Die `.htaccess` im Projektstamm übernimmt Basic Auth, das Rewrite nach `public/` und sperrt `src/`, `scss/`, SQL-/Docker-Dateien.
 
 **Einmalige Einrichtung auf dem Server:**
 
@@ -79,7 +79,8 @@ cat ~/.ssh/id_ed25519.pub   # → GitHub → Repo → Settings → Deploy keys
 
 # 3. Klonen (Docroot muss leer sein)
 cd /home/www/alexanderkhuu.de
-git clone git@github.com:<github-user>/typeshyt.git .
+mkdir -p typeshyt && cd typeshyt
+git clone git@github.com:Hyfuku/typeshyt.git .
 
 # 4. DB-Zugangsdaten hinterlegen (nicht in Git!)
 cp src/config.local.php.example src/config.local.php
