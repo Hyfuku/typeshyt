@@ -110,7 +110,9 @@ $pill-aktiv: ".filter-pill:has(input:not(:placeholder-shown), select option:chec
         transition: background-color $uebergang;
     }
 
-    #{$pill-aktiv} ~ .filter-verbinder:has(~ #{$pill-aktiv}) {
+    // Wichtig: :has() darf nicht in :has() verschachtelt werden – deshalb
+    // prüft die rechte Seite direkt auf das gefüllte Feld in einer Folge-Pill.
+    #{$pill-aktiv} ~ .filter-verbinder:has(~ .filter-pill input:not(:placeholder-shown), ~ .filter-pill select option:checked:not([value=''])) {
         background: $blau;
     }
 

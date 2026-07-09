@@ -43,8 +43,8 @@ if ($suche_aktiv) {
 }
 
 ?>
-<link rel="stylesheet" href="<?= url('/css/style.css') ?>"> //STYLING
-<link rel="stylesheet" href="<?= url('/css/filter.css') ?>"> //FILTER STYLING
+<link rel="stylesheet" href="<?= url('/css/style.css') ?>"> <!---Style CSS-->
+<link rel="stylesheet" href="<?= url('/css/filter.css') ?>"> <!---Sytle CSS-->
 
 <main>
     <h1>Datenbank</h1>
