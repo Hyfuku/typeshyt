@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Deployt den aktuellen Stand:
+# 1. lokale Commits zu GitHub pushen
+# 2. auf dem Webserver git pull ausführen
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+echo "== Push zu GitHub =="
+git push origin main
+
+echo "== Pull auf dem Server =="
+ssh web23@s71.goserver.host 'cd /home/www/alexanderkhuu.de/typeshyt && git pull --ff-only'
+
+echo "✔ Deployment fertig: http://alexanderkhuu.de/typeshyt/"
